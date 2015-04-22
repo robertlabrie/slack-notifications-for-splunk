@@ -1,0 +1,17 @@
+<!--
+Slack alert app for Splunk
+
+Author:: Robert Labrie <robert.labrie@gmail.com>
+License:: Apache License, Version 2.0
+-->
+
+
+<setup>
+  <block title="Slackchat service integration"
+      endpoint="slack-notifications-for-splunk/slack_config" entity="slack_config">
+    <input field="api_key">
+      <label>Service API key</label>
+      <type>text</type>
+    </input>
+  </block>
+</setup>

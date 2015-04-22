@@ -1,0 +1,11 @@
+[app/install/state]
+version = 6.0.3
+modtime = 1429732084.509209300
+
+[slack/slack_config]
+version = 6.0.3
+modtime = 1429732986.016829800
+
+[app/install/is_configured]
+version = 6.0.3
+modtime = 1429732988.856029800
