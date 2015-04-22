@@ -104,28 +104,28 @@ def extract_events(events_file):
     return events
 
 
-def trigger_slack(description, details, slack_api_key,
+def trigger_slack(description, details, slack_chat_url,
                       incident_key=None):
     """Triggers Slack Incident with given params.
 
     @param description:
     @param details:
-    @param slack_api_key: Slack Service Integration API Key.
+    @param slack_chat_url: Slack Service Integration API Key.
     @incident_key: (default=None)
 
     @type description: str
     @type details: str
-    @type slack_api_key: str
+    @type slack_chat_url: str
     @type incident_key: str
 
     @return: slack.trigger object.
     @rtype: slack.trigger object.
     """
-    slack = Slack(slack_api_key)
+    slack = Slack(slack_chat_url)
     return slack.trigger(description, incident_key, details)
 
 
-def get_slack_api_key(config_file):
+def get_slack_chat_url(config_file):
     """Extracts Slack Service Integration API Key from Splunk Config.
 
     @param config_file: Full path to file containing Pagerduty API Credentials.
@@ -142,7 +142,7 @@ def get_slack_api_key(config_file):
         # http://stackoverflow.com/questions/1648517/configparser-with-unicode-items
         config.readfp(codecs.open(config_file, 'r', 'utf-8-sig'))
 
-    return config.get('slack_config', 'api_key')
+    return config.get('slack_config', 'chat_url')
 
 
 def main():
@@ -154,7 +154,7 @@ def main():
         os.environ['SPLUNK_HOME'], 'etc', 'apps', 'splunk_app_slack',
         'local', 'slack.conf')
 
-    slack_api_key = get_slack_api_key(config_file)
+    slack_chat_url = get_slack_chat_url(config_file)
 
     for env_key in os.environ:
         if 'SPLUNK_ARG' in env_key:
@@ -174,7 +174,7 @@ def main():
 
     description = os.environ.get('SPLUNK_ARG_5', default_description)
 
-    trigger_slack(description, details, slack_api_key)
+    trigger_slack(description, details, slack_chat_url)
 
 
 if __name__ == '__main__':

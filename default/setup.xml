@@ -9,8 +9,8 @@ License:: Apache License, Version 2.0
 <setup>
   <block title="Slackchat service integration"
       endpoint="slack-notifications-for-splunk/slack_config" entity="slack_config">
-    <input field="api_key">
-      <label>Service API key</label>
+    <input field="chat_url">
+      <label>Slack integration URL</label>
       <type>text</type>
     </input>
   </block>

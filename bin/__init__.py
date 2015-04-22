@@ -7,4 +7,4 @@ __license__ = 'Apache License, Version 2.0'
 
 
 from .slack import (SlackException, Slack, extract_events,  # NOQA
-    trigger_slack, get_slack_api_key)
+    trigger_slack, get_slack_chat_url)

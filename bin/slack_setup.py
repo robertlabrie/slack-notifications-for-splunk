@@ -20,7 +20,7 @@ class ConfigSlackApp(splunk.admin.MConfigHandler):
 
     def setup(self):
         if self.requestedAction == splunk.admin.ACTION_EDIT:
-            self.supportedArgs.addOptArg('api_key')
+            self.supportedArgs.addOptArg('chat_url')
 
     def handleList(self, confInfo):
         conf = self.readConf('slack')
@@ -31,8 +31,8 @@ class ConfigSlackApp(splunk.admin.MConfigHandler):
 
     def handleEdit(self, confInfo):
         del confInfo
-        if self.callerArgs.data['api_key'][0] in [None, '']:
-            self.callerArgs.data['api_key'][0] = ''
+        if self.callerArgs.data['chat_url'][0] in [None, '']:
+            self.callerArgs.data['chat_url'][0] = ''
 
         self.writeConf('slack', 'slack_config', self.callerArgs.data)
         install_slack_py(os.environ.get('SPLUNK_HOME'))
