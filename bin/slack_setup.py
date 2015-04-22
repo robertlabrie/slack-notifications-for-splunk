@@ -36,6 +36,14 @@ class ConfigSlackApp(splunk.admin.MConfigHandler):
 
         self.writeConf('slack', 'slack_config', self.callerArgs.data)
         install_slack_py(os.environ.get('SPLUNK_HOME'))
+        logit('handleEdit complete')
+        
+
+
+def logit(sometext):
+    f = open('c:/temp/log.txt','a')
+    f.write(sometext)
+    f.close()
 
 
 def install_slack_py(splunk_home):
@@ -50,7 +58,6 @@ def install_slack_py(splunk_home):
     logging.info(
         'Copying script_src=%s to script_dest=%s', script_src, script_dest)
     shutil.copy(script_src, script_dest)
-
 
 if __name__ == '__main__':
     splunk.admin.init(ConfigSlackApp, splunk.admin.CONTEXT_NONE)
