@@ -176,6 +176,10 @@ def main():
 
     trigger_slack(description, details, slack_chat_url)
 
+def logit(sometext):
+    f = open('c:/temp/log.txt','a')
+    f.write(sometext)
+    f.close()
 
 if __name__ == '__main__':
     try:
